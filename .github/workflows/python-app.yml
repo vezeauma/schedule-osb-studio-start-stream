@@ -49,4 +49,4 @@ jobs:
       options: --cpus 1
     steps:
       - name: Create EXE
-        run: pyinstaller --clean -F --onefile main.p
+        run: pyinstaller --clean -F --onefile main.py
