@@ -49,5 +49,6 @@ jobs:
     steps:
       - name: Create EXE
         run: |
+          ls -l
           cd /src
           pyinstaller --clean -F --onefile main.py
