@@ -39,16 +39,17 @@ jobs:
 #        pytest
 
   package-windows:
+    name: Create Windows Package
     runs-on: ubuntu-latest
-    container:
-      image: cdrx/pyinstaller-windows
-      env:
-        NODE_ENV: development
-      volumes:
-        - ${{ GITHUB_WORKSPACE }}:/src
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: Create EXE
-        run: |
-          ls -l
-          cd /src
-          pyinstaller --clean -F --onefile main.py
+        uses: addnab/docker-run-action@v3
+        with:
+           image: cdrx/pyinstaller-windows
+           options: -v ${{ github.workspace }}:/src
+           run: |
+             ls -l
+             cd /src
+             pyinstaller --clean -F --onefile main.py
