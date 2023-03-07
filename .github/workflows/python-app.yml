@@ -53,10 +53,11 @@ jobs:
              ls -l
              cd /src
              pyinstaller --clean -F --onefile main.py
+             cp .env.SAMPLE dist/.env
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Windows
+          name: schedule-osb-studio-start-stream-Windows-Version
           path: |
             dist
             !dist/**/*.md
