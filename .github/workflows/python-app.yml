@@ -39,14 +39,25 @@ jobs:
 #        pytest
 
   package-windows:
+    name: Create Windows Package
     runs-on: ubuntu-latest
-    container:
-      image: cdrx/pyinstaller-windows
-      env:
-        NODE_ENV: development
-      volumes:
-        - ${{ github.workspace }}:/src
-      options: --cpus 1
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: Create EXE
-        run: pyinstaller --clean -F --onefile main.p
+        uses: addnab/docker-run-action@v3
+        with:
+           image: cdrx/pyinstaller-windows
+           options: -v ${{ github.workspace }}:/src
+           run: |
+             ls -l
+             cd /src
+             pyinstaller --clean -F --onefile main.py
+             cp .env.SAMPLE dist/.env
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: schedule-osb-studio-start-stream-Windows-Version
+          path: |
+            dist
+            !dist/**/*.md
