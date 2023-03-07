@@ -37,3 +37,16 @@ jobs:
 #    - name: Test with pytest
 #      run: |
 #        pytest
+
+  package-windows:
+    runs-on: ubuntu-latest
+    container:
+      image: cdrx/pyinstaller-windows
+      env:
+        NODE_ENV: development
+      volumes:
+        - .:/src
+      options: --cpus 1
+    steps:
+      - name: Create EXE
+        run: pyinstaller --clean -F --onefile main.p
