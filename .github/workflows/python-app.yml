@@ -53,3 +53,10 @@ jobs:
              ls -l
              cd /src
              pyinstaller --clean -F --onefile main.py
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows
+          path: |
+            dist
+            !dist/**/*.md
