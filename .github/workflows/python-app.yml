@@ -44,8 +44,10 @@ jobs:
       image: cdrx/pyinstaller-windows
       env:
         NODE_ENV: development
-#      volumes:
-#        - ${{ github.workspace }}:/src
+      volumes:
+        - ${{ github.workspace }}:/src
     steps:
       - name: Create EXE
-        run: pyinstaller --clean -F --onefile main.py
+        run: |
+          cd /src
+          pyinstaller --clean -F --onefile main.py
