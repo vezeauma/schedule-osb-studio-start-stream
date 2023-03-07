@@ -1,0 +1,3 @@
+obs-websocket-py
+python-dotenv
+datetime
