@@ -45,7 +45,7 @@ jobs:
       env:
         NODE_ENV: development
       volumes:
-        - .:/src
+        - ${{ github.workspace }}:/src
       options: --cpus 1
     steps:
       - name: Create EXE
