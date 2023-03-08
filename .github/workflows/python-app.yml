@@ -86,8 +86,10 @@ jobs:
           pip install pyinstaller
           pyinstaller --clean -F --onefile main.py
           cp .env.SAMPLE dist/.env
-      - name: artifact dist
+      - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: mac-11-dist
-          path: "*.zip"
+          name: schedule-osb-studio-start-stream-Mac-Version
+          path: |
+            dist
+            !dist/**/*.md
