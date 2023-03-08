@@ -67,6 +67,7 @@ jobs:
         with:
           image: cdrx/pyinstaller-linux
           options: -v ${{ github.workspace }}:/src
+          shell: bash
           run: |
             cd /src
             pyinstaller --clean -F --onefile schedule-obs.py
