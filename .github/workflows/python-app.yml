@@ -26,6 +26,7 @@ jobs:
           options: -v ${{ github.workspace }}:/src
           shell: bash
           run: |
+            /entrypoint.sh
             cd /src
             pyinstaller --clean -F --onefile --name="schedule-obs" schedule-obs.py
             cp .env.SAMPLE dist/.env
