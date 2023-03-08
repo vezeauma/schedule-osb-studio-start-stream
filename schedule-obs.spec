@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['main.py'],
+a = Analysis(['schedule-obs.py'],
              pathex=['Z:\\src'],
              binaries=[],
              datas=[],
@@ -23,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
+          name='schedule-obs',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
