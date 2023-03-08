@@ -69,7 +69,7 @@ jobs:
           options: -v ${{ github.workspace }}:/src
           shell: bash
           run: |
-            ps -p $$
+            /entrypoint.sh
             ls -l
             cd /src
             pyinstaller --clean -F --onefile schedule-obs.py
