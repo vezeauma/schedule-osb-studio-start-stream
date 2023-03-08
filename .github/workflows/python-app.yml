@@ -69,6 +69,8 @@ jobs:
           options: -v ${{ github.workspace }}:/src
           shell: bash
           run: |
+            ps -p $$
+            ls -l
             cd /src
             pyinstaller --clean -F --onefile schedule-obs.py
             cp .env.SAMPLE dist/.env
