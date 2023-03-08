@@ -47,7 +47,6 @@ jobs:
            image: cdrx/pyinstaller-windows
            options: -v ${{ github.workspace }}:/src
            run: |
-             ls -l
              cd /src
              pyinstaller --clean -F --onefile --windowed main.py
              cp .env.SAMPLE dist/.env
@@ -72,7 +71,7 @@ jobs:
            image: cdrx/pyinstaller-linux
            options: -v ${{ github.workspace }}:/src
            run: |
-             ls -l
+             pip install pyinstaller
              cd /src
              pyinstaller --clean -F --onefile main.py
              cp .env.SAMPLE dist/.env
